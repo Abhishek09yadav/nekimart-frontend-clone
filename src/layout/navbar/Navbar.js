@@ -78,7 +78,7 @@ const Navbar = () => {
                     height={40}
                     className="w-full h-auto"
                     priority
-                    src="/logo/logoneki.png"
+                    src="/logo/logo.png"
                     alt="logo"
                   />
                 </Link>
