@@ -111,10 +111,34 @@ const VendorRegistrationForm = () => {
     });
 
     try {
+      // ✅ Send to your backend (including files)
       // const result = await requests.post("tele/Vendor/add", form, {
       //   headers: { "Content-Type": "multipart/form-data" },
       // });
-      // console.log(result);
+      // console.log("Backend response:", result);
+
+      const web3Response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
+          subject: "New Vendor Registration",
+          name: formData.name,
+          email: formData.email,
+          mobile: formData.mobile,
+          brandName: formData.brandName,
+          aboutProduct: formData.aboutProduct,
+          accountNumber: formData.bankAccNumber,
+          IFSC: formData.IFSC,
+          accountHolderName: formData.accountHolderName,
+          bankBranch: formData.bankBranch,
+        }),
+      });
+
+      const web3Result = await web3Response.json();
+      console.log("Web3Forms response:", web3Result);
 
       toast.success(
         "Thanks For Submitting Vendor Registration. Our Team Will Get Back To You Soon."
@@ -141,6 +165,7 @@ const VendorRegistrationForm = () => {
       setIsSubmitting(false);
     }
   };
+  
 
   return (
     <Layout title="Vendor Registration" description="Register as a Vendor">
