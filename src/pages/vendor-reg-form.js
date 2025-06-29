@@ -7,6 +7,7 @@ import useUtilsFunction from "@hooks/useUtilsFunction";
 import { toast } from "react-toastify";
 import requests from "@services/httpServices";
 import { getUserSession } from "@lib/auth";
+import axios from "axios";
 
 const VendorRegistrationForm = () => {
   const { storeCustomizationSetting, loading } = useGetSetting();
@@ -29,6 +30,34 @@ const VendorRegistrationForm = () => {
     accountHolderName: "",
     bankBranch: "",
   });
+
+  // const uploadToCloudinary = async (file, fieldName) => {
+  //   setUploadingFile((prev) => ({ ...prev, [fieldName]: true }));
+  //   try {
+  //     const formData = new FormData();
+  //     formData.append("file", file);
+  //     formData.append(
+  //       "upload_preset",
+  //       process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
+  //     );
+  //     const response = await axios.post(
+  //       process.env.NEXT_PUBLIC_CLOUDINARY_URL,
+  //       formData,
+  //       {
+  //         headers: {
+  //           "Content-Type": "multipart/form-data",
+  //         },
+  //       }
+  //     );
+  //     return response.data.secure_url;
+  //   } catch (error) {
+  //     console.error("Cloudinary upload error:", error);
+  //     toast.error(`Failed to upload ${fieldName}. Please try again.`);
+  //     return null;
+  //   } finally {
+  //     setUploadingFiles((prev) => ({ ...prev, [fieldName]: false }));
+  //   }
+  // };
 
   const formFields = [
     {
@@ -165,7 +194,6 @@ const VendorRegistrationForm = () => {
       setIsSubmitting(false);
     }
   };
-  
 
   return (
     <Layout title="Vendor Registration" description="Register as a Vendor">
