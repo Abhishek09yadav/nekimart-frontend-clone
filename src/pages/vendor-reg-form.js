@@ -180,7 +180,7 @@ const VendorRegistrationForm = () => {
           <div className="bg-white shadow-lg rounded-lg overflow-hidden">
             <div className="bg-customColor px-6 py-4">
               <h2 className="text-xl font-bold text-white">
-                Vendor Registration Form
+                Partner With Us Form
               </h2>
               <p className="text-indigo-100 mt-1 text-sm">
                 Fill in the details below to join our partner network
